@@ -28,14 +28,9 @@
         "url": "http://github.com/ozra/mmap-io/issues"
     },
     "scripts": {
-        "clean": "rm -rf build ./build/es-release/mmap-io.d.ts",
-        "build": "yarn build-addon && yarn build-es && yarn test",
-        "build-addon": "node-gyp configure && node-gyp rebuild",
-        "build-es": "./node_modules/typescript/bin/tsc && cp ./build/es-release/mmap-io.d.ts ./",
-        "prepublish": "yarn build",
-        "install": "yarn build-addon",
-        "test": "./node_modules/livescript/bin/lsc -o ./build/es-release/ -b -c ./src/test.ls && ((which nodejs && nodejs ./build/es-release/test.js) || node ./build/es-release/test.js)",
-        "watch": "while true; do (yarn build; inotifywait -qre close_write,moved_to --exclude '\\.git' ./src/; ) done;"
+        "clean": "rm -rf build",
+        "build": "node-gyp configure && node-gyp rebuild",
+        "test": "./node_modules/livescript/bin/lsc -o ./build/Release/ -b -c ./src/test.ls && ((which nodejs && nodejs ./build/Release/test.js) || node ./build/Release/test.js)"
     },
   "main": "mmap-io",
     "devDependencies": {
